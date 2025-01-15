@@ -470,9 +470,9 @@ app.get("/generate-pdf", async (req, res) => {
     const response = await axios.get(`${apiUrl}/show/${docNo}`);
 
     const additionalData = response.data;
-    console.log("additional", JSON.stringify(additionalData));
+    // console.log("additional", JSON.stringify(additionalData));
     const formatted = groupByVendor(additionalData);
-    console.log("formatted", JSON.stringify(formatted));
+    // console.log("formatted", JSON.stringify(formatted));
 
     const pdfDoc = new pdfMake(fonts).createPdfKitDocument(
       docDefinition(docNo, additionalData, formatted)
