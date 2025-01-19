@@ -352,42 +352,50 @@ const docDefinition = (docNo, additionalData, formatted) => ({
             },
           ],
           [
-            {
-              qr: `${
-                additionalData?.created_by?.name +
-                  " - " +
-                  additionalData?.created_by?.created_at ?? "-"
-              }`,
-              alignment: "center",
-              fit: 50,
-            },
-            {
-              qr: `${
-                additionalData?.know_spb_kepalagudang?.user_name +
-                  " - " +
-                  additionalData?.know_spb_kepalagudang?.approve_date ?? "-"
-              }`,
-              alignment: "center",
-              fit: 50,
-            },
-            {
-              qr: `${
-                additionalData?.know_spb_marketing?.user_name +
-                  " - " +
-                  additionalData?.know_spb_marketing?.approve_date ?? "-"
-              }`,
-              alignment: "center",
-              fit: 50,
-            },
-            {
-              qr: `${
-                additionalData?.payment_request_owner?.user_name +
-                  " - " +
-                  additionalData?.payment_request_owner?.approve_date ?? "-"
-              }`,
-              alignment: "center",
-              fit: 50,
-            },
+            additionalData?.created_by?.name
+              ? {
+                  qr: `${
+                    additionalData?.created_by?.name +
+                      " - " +
+                      additionalData?.created_by?.created_at ?? "-"
+                  }`,
+                  alignment: "center",
+                  fit: 50,
+                }
+              : { text: "-" },
+            additionalData?.know_spb_kepalagudang?.user_name
+              ? {
+                  qr: `${
+                    additionalData?.know_spb_kepalagudang?.user_name +
+                      " - " +
+                      additionalData?.know_spb_kepalagudang?.approve_date ?? "-"
+                  }`,
+                  alignment: "center",
+                  fit: 50,
+                }
+              : { text: "" },
+            additionalData?.know_spb_marketing?.user_name
+              ? {
+                  qr: `${
+                    additionalData?.know_spb_marketing?.user_name +
+                      " - " +
+                      additionalData?.know_spb_marketing?.approve_date ?? "-"
+                  }`,
+                  alignment: "center",
+                  fit: 50,
+                }
+              : { text: "" },
+            additionalData?.payment_request_owner?.user_name
+              ? {
+                  qr: `${
+                    additionalData?.payment_request_owner?.user_name +
+                      " - " +
+                      additionalData?.payment_request_owner?.approve_date ?? "-"
+                  }`,
+                  alignment: "center",
+                  fit: 50,
+                }
+              : { text: "" },
           ],
           [
             {
@@ -470,7 +478,7 @@ app.get("/generate-pdf", async (req, res) => {
     const response = await axios.get(`${apiUrl}/show/${docNo}`);
 
     const additionalData = response.data;
-    console.log("datae", additionalData);
+    // console.log("datae", additionalData);
     const formatted = groupByVendor(additionalData);
     // console.log("formatted", JSON.stringify(formatted));
 
