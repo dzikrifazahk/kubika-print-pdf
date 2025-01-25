@@ -319,114 +319,167 @@ const docDefinition = (docNo, additionalData, formatted) => ({
     {
       margin: [20, 30, 20, 0],
       table: {
-        widths: ["*", "*", "*", "*"],
-        body: [
-          [
-            {
-              text: "Dibuat Oleh",
-              fontSize: 10,
-              bold: true,
-              alignment: "center",
-              // border: [true, true, true, true],
-            },
-            {
-              text: "Kepala Gudang",
-              fontSize: 10,
-              bold: true,
-              alignment: "center",
-              // border: [true, true, true, true],
-            },
-            {
-              text: "Mengetahui",
-              fontSize: 10,
-              bold: true,
-              alignment: "center",
-              // border: [true, true, true, true],
-            },
-            {
-              text: "Menyetujui",
-              fontSize: 10,
-              bold: true,
-              alignment: "center",
-              // border: [true, true, true, true],
-            },
-          ],
-          [
-            additionalData?.created_by?.name
-              ? {
-                  qr: `${
-                    additionalData?.created_by?.name +
-                      " - " +
-                      additionalData?.created_by?.created_at ?? "-"
-                  }`,
-                  alignment: "center",
-                  fit: 50,
-                }
-              : { text: "-" },
-            additionalData?.know_spb_kepalagudang?.user_name
-              ? {
-                  qr: `${
-                    additionalData?.know_spb_kepalagudang?.user_name +
-                      " - " +
-                      additionalData?.know_spb_kepalagudang?.approve_date ?? "-"
-                  }`,
-                  alignment: "center",
-                  fit: 50,
-                }
-              : { text: "" },
-            additionalData?.know_spb_marketing?.user_name
-              ? {
-                  qr: `${
-                    additionalData?.know_spb_marketing?.user_name +
-                      " - " +
-                      additionalData?.know_spb_marketing?.approve_date ?? "-"
-                  }`,
-                  alignment: "center",
-                  fit: 50,
-                }
-              : { text: "" },
-            additionalData?.payment_request_owner?.user_name
-              ? {
-                  qr: `${
-                    additionalData?.payment_request_owner?.user_name +
-                      " - " +
-                      additionalData?.payment_request_owner?.approve_date ?? "-"
-                  }`,
-                  alignment: "center",
-                  fit: 50,
-                }
-              : { text: "" },
-          ],
-          [
-            {
-              text: `${additionalData?.created_by?.name ?? "-"}`,
-              alignment: "center",
-              fontSize: 8,
-            },
-            {
-              text: `${
-                additionalData?.know_spb_kepalagudang?.user_name ?? "-"
-              }`,
-              alignment: "center",
-              fontSize: 8,
-            },
-            {
-              text: `${additionalData?.know_spb_marketing?.user_name ?? "-"}`,
-              alignment: "center",
-              fontSize: 8,
-            },
-            {
-              text: `${
-                additionalData?.payment_request_owner?.user_name ?? "-"
-              }`,
-              alignment: "center",
-              fontSize: 8,
-            },
-          ],
-        ],
+        widths: additionalData?.type_spb_project?.id === "2" ? ["*", "*"] : ["*", "*", "*", "*"],
+        body:
+          additionalData?.type_spb_project?.id === "2"
+            ? [
+                [
+                  {
+                    text: "Dibuat Oleh",
+                    fontSize: 10,
+                    bold: true,
+                    alignment: "center",
+                  },
+                  {
+                    text: "Menyetujui",
+                    fontSize: 10,
+                    bold: true,
+                    alignment: "center",
+                  },
+                ],
+                [
+                  additionalData?.created_by?.name
+                    ? {
+                        qr: `${
+                          additionalData?.created_by?.name +
+                            " - " +
+                            additionalData?.created_by?.created_at ?? "-"
+                        }`,
+                        alignment: "center",
+                        fit: 50,
+                      }
+                    : { text: "-" },
+                  additionalData?.payment_request_owner?.user_name
+                    ? {
+                        qr: `${
+                          additionalData?.payment_request_owner?.user_name +
+                            " - " +
+                            additionalData?.payment_request_owner?.approve_date ?? "-"
+                        }`,
+                        alignment: "center",
+                        fit: 50,
+                      }
+                    : { text: "-" },
+                ],
+                [
+                  {
+                    text: `${additionalData?.created_by?.name ?? "-"}`,
+                    alignment: "center",
+                    fontSize: 8,
+                  },
+                  {
+                    text: `${
+                      additionalData?.payment_request_owner?.user_name ?? "-"
+                    }`,
+                    alignment: "center",
+                    fontSize: 8,
+                  },
+                ],
+              ]
+            : [
+                [
+                  {
+                    text: "Dibuat Oleh",
+                    fontSize: 10,
+                    bold: true,
+                    alignment: "center",
+                  },
+                  {
+                    text: "Kepala Gudang",
+                    fontSize: 10,
+                    bold: true,
+                    alignment: "center",
+                  },
+                  {
+                    text: "Mengetahui",
+                    fontSize: 10,
+                    bold: true,
+                    alignment: "center",
+                  },
+                  {
+                    text: "Menyetujui",
+                    fontSize: 10,
+                    bold: true,
+                    alignment: "center",
+                  },
+                ],
+                [
+                  additionalData?.created_by?.name
+                    ? {
+                        qr: `${
+                          additionalData?.created_by?.name +
+                            " - " +
+                            additionalData?.created_by?.created_at ?? "-"
+                        }`,
+                        alignment: "center",
+                        fit: 50,
+                      }
+                    : { text: "-" },
+                  additionalData?.know_spb_kepalagudang?.user_name
+                    ? {
+                        qr: `${
+                          additionalData?.know_spb_kepalagudang?.user_name +
+                            " - " +
+                            additionalData?.know_spb_kepalagudang?.approve_date ?? "-"
+                        }`,
+                        alignment: "center",
+                        fit: 50,
+                      }
+                    : { text: "" },
+                  additionalData?.know_spb_marketing?.user_name
+                    ? {
+                        qr: `${
+                          additionalData?.know_spb_marketing?.user_name +
+                            " - " +
+                            additionalData?.know_spb_marketing?.approve_date ?? "-"
+                        }`,
+                        alignment: "center",
+                        fit: 50,
+                      }
+                    : { text: "" },
+                  additionalData?.payment_request_owner?.user_name
+                    ? {
+                        qr: `${
+                          additionalData?.payment_request_owner?.user_name +
+                            " - " +
+                            additionalData?.payment_request_owner?.approve_date ?? "-"
+                        }`,
+                        alignment: "center",
+                        fit: 50,
+                      }
+                    : { text: "" },
+                ],
+                [
+                  {
+                    text: `${additionalData?.created_by?.name ?? "-"}`,
+                    alignment: "center",
+                    fontSize: 8,
+                  },
+                  {
+                    text: `${
+                      additionalData?.know_spb_kepalagudang?.user_name ?? "-"
+                    }`,
+                    alignment: "center",
+                    fontSize: 8,
+                  },
+                  {
+                    text: `${additionalData?.know_spb_marketing?.user_name ?? "-"}`,
+                    alignment: "center",
+                    fontSize: 8,
+                  },
+                  {
+                    text: `${
+                      additionalData?.payment_request_owner?.user_name ?? "-"
+                    }`,
+                    alignment: "center",
+                    fontSize: 8,
+                  },
+                ],
+              ],
       },
       layout: "noBorders",
-    },
+    }
+    
   ],
   footer: function () {
     return [
@@ -478,7 +531,7 @@ app.get("/generate-pdf", async (req, res) => {
     const response = await axios.get(`${apiUrl}/show/${docNo}`);
 
     const additionalData = response.data;
-    // console.log("datae", additionalData);
+    console.log("datae", additionalData);
     const formatted = groupByVendor(additionalData);
     // console.log("formatted", JSON.stringify(formatted));
 
