@@ -426,12 +426,12 @@ const docDefinition = (docNo, additionalData, formatted) => ({
                         fit: 50,
                       }
                     : { text: "" },
-                  additionalData?.know_spb_marketing?.user_name
+                  additionalData?.know_spb_supervisor?.user_name
                     ? {
                         qr: `${
-                          additionalData?.know_spb_marketing?.user_name +
+                          additionalData?.know_spb_supervisor?.user_name +
                             " - " +
-                            additionalData?.know_spb_marketing?.approve_date ?? "-"
+                            additionalData?.know_spb_supervisor?.approve_date ?? "-"
                         }`,
                         alignment: "center",
                         fit: 50,
