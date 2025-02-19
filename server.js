@@ -463,7 +463,7 @@ const docDefinition = (docNo, additionalData, formatted) => ({
                     fontSize: 8,
                   },
                   {
-                    text: `${additionalData?.know_spb_marketing?.user_name ?? "-"}`,
+                    text: `${additionalData?.know_spb_supervisor?.user_name ?? "-"}`,
                     alignment: "center",
                     fontSize: 8,
                   },
